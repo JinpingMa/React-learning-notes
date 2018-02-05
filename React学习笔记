@@ -1,0 +1,49 @@
+方法中这个 this 对象就指向了类的实例的方法：
+1.使用bind函数
+class ExplainBindingsComponent extends Component {
+  constructor() {
+    super();
+    this.onClickMe = this.onClickMe.bind(this);//this对象指向类的实例方法
+  }
+  onClickMe() {
+    console.log(this);
+}
+  render() {
+    return (
+      <button
+        onClick={this.onClickMe}
+        type="button"
+>
+Click Me
+</button> );
+} }
+2.使用ES6的箭头函数，自动绑定
+class ExplainBindingsComponent extends Component { 
+  onClickMe = () => {
+	console.log(this); //箭头函数自动绑定
+  }
+  render() { 
+    return (
+	  <button 
+	    onClick={this.onClickMe}
+	    type="button"
+      >
+	  Click Me
+	  </button> 
+    );
+  } 
+}
+
+2.有参数的方法的调用
+<button
+onClick={() => this.onDismiss(item.objectID)} type="button"
+>
+Dismiss
+</button>
+这已经是一个复杂的例子了，因为你必须传递一个参数到类的方法，因此你需要将它封装 到另一个(箭头)函数中，基本上，由于要传递给事件处理器使用，因此它必须是一个函 数。下面的代码不会工作，因为类方法会在浏览器中打开程序时立即执行。
+<button onClick={this.onDismiss(item.objectID)} type="button"
+>
+Dismiss
+</button>
+当使用 onClick={doSomething()} 时，doSomething() 函数会在浏览器打开程序时立即执行， 由于监听表达式是函数执行的返回值而不再是函数，所以点击按钮时不会有任何事发生。 但当使用 onClick={doSomething} 时，因为 doSomething 是一个函数，所以它会在点击按钮 时执行。同样的规则也适用于在程序中使用的 onDismiss() 类方法。
+然而，使用 onClick={this.onDismiss} 并不够，因为这个类方法需要接收 item.objectID 属 性来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属 性。这个概念在 JavaScript 中被称为高阶函数。
