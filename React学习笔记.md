@@ -58,7 +58,8 @@ class ExplainBindingsComponent extends Component {
 然而，使用 `onClick={this.onDismiss}` 并不够，因为这个类方法需要接收 `item.objectID` 属 性来识别那个将要被忽略的项，这就是为什么它需要被封装到另一个函数中来传递这个属 性。这个概念在 JavaScript 中被称为高阶函数。
 
 
-## 表单元素比如 `<input>`, `<textarea>` 和 `<select>` 会以原生 HTML 的形式保存他 们自己的状态。一旦有人从外部做了一些修改，它们就会修改内部的值，在 `React` 中这被 称为不受控组件，因为它们自己处理状态。在 React 中，你应该确保这些元素变为受控组 件。
+## 不受控组件`<input>`, `<textarea>` 和 `<select>`变为受控组件
+表单元素比如 `<input>`, `<textarea>` 和 `<select>` 会以原生 HTML 的形式保存他 们自己的状态。一旦有人从外部做了一些修改，它们就会修改内部的值，在 `React` 中这被 称为不受控组件，因为它们自己处理状态。在 React 中，你应该确保这些元素变为受控组 件。
 你应该怎么做呢?你只需要设置输入框的值属性，这个值已经在 searchTerm 状态属性中保存了，那么为什么不从这里访问呢?
 ```js
 <form>
