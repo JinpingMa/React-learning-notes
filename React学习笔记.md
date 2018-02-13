@@ -124,3 +124,21 @@ class Search extends Component {
 * `componentWillMount()` 
 * `render()`
 * `componentDidMount()`
+## JavaScript的扩展操作符
+在 JavaScript ES6 以及之后的 JavaScript 版本中还有一个更 简单的方法。现在我将向你介绍扩展操作符。它只由三个点组成:...。当使用它时，数组 或对象中的每一个值都会被拷贝到一个新的数组或对象。
+让我们先来看一下 ES6 中数组的扩展运算符，虽然你现在还用不到它。
+```js
+const userList = ['Robin', 'Andrew', 'Dan']; const additionalUser = 'Jordan';
+const allUsers = [ ...userList, additionalUser ];
+console.log(allUsers);
+// output: ['Robin', 'Andrew', 'Dan', 'Jordan']
+```
+现在让我们来看看对象的扩展运算符。它并不是 JavaScript ES6 中的用法。它是针对下一 个 JavaScript 版本的提出的92，然而它已经在 React 社区开始使用了。这就是为什么需要在 create-react-app 配置中加入了这个功能。
+本质上来说，对象的扩展运算符和数组的扩展运算符是一样的，只是用在了对象上。
+## JavaScript ES6 中的 Object.assign()
+它把接收的第 一个参数作为目标对象，后面的所有参数作为源对象。然后把所有的源对象合并到目标对 象中。只要把目标对象设置成一个空对象，我们就得到了一个新的对象。
+```js
+const updatedHits = { hits: updatedHits };
+const updatedResult = Object.assign({}, this.state.result, updatedHits);
+```
+当遇到相同的属性时，排在后面的对象会覆写先前对象的该属性。
